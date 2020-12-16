@@ -1,0 +1,41 @@
+<ion-toolbar>
+  <ion-title>Friends</ion-title>
+  <ion-buttons slot="primary">
+    <ion-button routerLink="./add">
+      <ion-icon name="person-add-sharp" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content>
+  <ion-grid>
+    <!-- Search Bar -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-sm="6">
+        <ion-searchbar color="dark" type="text" [(ngModel)]="searchValue" placeholder="Search Friend...." (click)="searchUser()"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+    <!-- Friends List -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-sm="6" *ngIf="userFriendsDataFilter">
+        <div *ngFor="let eachFriend of userFriendsDataFilter; let i = index" (press)="onPress(i, eachFriend.name)">
+          <ion-card>
+            <ion-item>
+              <!-- Menampilkan Foto Teman -->
+              <ion-avatar style="--border-radius: 20px;">
+                <ion-img src="assets/icon/avatar_male.png" style="object-fit: contain" *ngIf="!eachFriend.foto"></ion-img>
+                <img id="friendsPicture{{i}}" src="{{ eachFriend.foto }}" class="circle-image" *ngIf="eachFriend.foto" (load)="imageLoaded($event)">
+              </ion-avatar>
+              <!-- Menampilkan Data Teman -->
+              <ion-label class="ion-padding-start">
+                <h2 style="font-weight: bold">{{ eachFriend.name }}</h2>
+                <ion-text>
+                  <p style="color: #3a7be0;">{{ eachFriend.email }}</p>
+                </ion-text>
+              </ion-label>
+            </ion-item>
+        </ion-card>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

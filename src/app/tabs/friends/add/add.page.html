@@ -1,0 +1,57 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/home/tabs/friends"></ion-back-button>
+  </ion-buttons>
+  <ion-title>Add Friend</ion-title>
+</ion-toolbar>
+<style>
+  .circle-pic{
+    width: 150px;
+    height: 150px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 8px gray;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .vertical-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+</style>
+<ion-content>
+  <ion-grid *ngIf="usersData">
+    <!-- Search Bar -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-sm="6">
+        <ion-searchbar color="dark" type="text" [(ngModel)]="searchValue" placeholder="Enter a friend's email..." (click)="searchUser()"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+    <!-- Menampilkan Data Teman -->
+      <ion-row class="ion-justify-content-center" *ngIf="boolUserFound == true;" style="padding-top: 50px">
+        <ion-col size="6" size-sm="2">
+          <!-- Menampilkan Gambar/Foto Teman -->
+          <div class="vertical-center">
+            <ion-img class="circle-pic" src="assets/icon/avatar_male.png" *ngIf="!searchedUserData.foto"></ion-img>
+            <img id="userPicture" src="{{ searchedUserData.foto }}" class="circle-pic" *ngIf="searchedUserData.foto" (load)="imageLoaded($event)">
+          </div>
+          <!-- Menampilkan data user -->
+            <ion-label class="ion-text-center">
+              <ion-text style="font-size: 20px; font-weight: bold;">
+                <h1>{{ searchedUserData.name }}</h1>
+              </ion-text>
+              <ion-text style="color: #7d7d7d; font-size: 10px">
+                <p>{{ searchedUserData.email }}</p>
+              </ion-text>
+            </ion-label>
+          <ion-button class="ion-margin-top" color="tertiary" expand="block" (click)="addFriend()" *ngIf="boolUserIsFriend == false">+ ADD FRIEND</ion-button>
+          <ion-text color="warning" class="ion-text-center" style="font-size: 12px;" *ngIf="boolUserIsFriend == true">
+            <p>!User has registered in Friend List</p>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-content>
