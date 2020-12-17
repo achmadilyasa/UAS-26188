@@ -39,7 +39,7 @@ export class LoginPage implements OnInit {
     this.authServ.loginUser(value).then(
         res => {
           console.log(res);
-          this.presentToast("Sign In success!","success");
+          this.presentToast("Sign In was successful :)","success");
           this.navCtrl.navigateForward('tabs/maps');
         },
         err => {
@@ -56,7 +56,9 @@ export class LoginPage implements OnInit {
     const toast = await this.toastController.create({
       message: message,
       color: color,
-      duration: 1000,
+      position: 'top',
+      mode: 'ios',
+      duration: 2000,
     });
     toast.present();
   }

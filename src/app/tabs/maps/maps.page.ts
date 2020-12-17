@@ -119,7 +119,8 @@ export class MapsPage implements OnInit {
     const toast = await this.toastCtrl.create({
       message: toastMessage,
       duration: 3000,
-      position: 'bottom',
+      position: 'top',
+      mode: 'ios',
       color: colorMessage,
     });
     await toast.present();

@@ -17,12 +17,12 @@ export class RegisterPage implements OnInit {
       {type: 'required', message: 'Name is required.'},
     ],
     'email' : [
-      {type: 'required', message: "Email is required."},
-      {type: 'pattern', message: "Enter a valid email."},
+      {type: 'required', message: 'Email is required.'},
+      {type: 'pattern', message: 'Enter a valid email.'},
     ],
     'password' : [
-      {type: 'required', message: "Password is required."},
-      {type: 'minLength', message: "Password must be at least 6 characters long."},
+      {type: 'required', message: 'Password is required.'},
+      {type: 'minLength', message: 'Password must be at least 6 characters long.'},
     ]
   }
 
@@ -54,7 +54,7 @@ export class RegisterPage implements OnInit {
     this.authServ.registerUser(value).then(
         res => {
           console.log(res);
-          this.presentToast("Register success! Please Sign in.","success");
+          this.presentToast("Sign Up was successful, Now Sign In","success");
           this.navCtrl.navigateBack('login')
         },
         err => {
@@ -72,7 +72,9 @@ export class RegisterPage implements OnInit {
     const toast = await this.toastController.create({
       message: message,
       color: color,
-      duration: 1000,
+      position: 'top',
+      mode: 'ios',
+      duration: 2000,
     });
     toast.present();
   }

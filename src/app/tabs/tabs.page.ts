@@ -83,7 +83,8 @@ export class TabsPage {
     const toast = await this.toastCtrl.create({
       message: toastMessage,
       duration: 3000,
-      position: 'bottom',
+      mode: 'ios',
+      position: 'top',
       color: colorMessage,
     });
     await toast.present();
