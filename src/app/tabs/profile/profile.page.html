@@ -1,5 +1,5 @@
 <ion-toolbar>
-  <ion-title>Hello, {{ userData.name }}</ion-title>
+  <ion-title>My Profile</ion-title>
   <ion-buttons slot="primary">
     <ion-button routerLink="/tabs/about">
       <ion-icon name="information" slot="icon-only" ></ion-icon>
@@ -56,7 +56,7 @@
         </ion-text>
         <div class="ion-padding ion-margin-top border-full">
         <ion-card-title class="ion-margin-bottom text-bold" style="font-size: 1em; font-weight: bold">My Feeds</ion-card-title>
-        <div class="text-gray" *ngIf="!userData.locations" style="font-size:0.8em">Tidak terdapat history lokasi</div>
+        <div class="text-gray" *ngIf="!userData.locations" style="font-size:0.8em">There is no history feed :(</div>
           <div *ngIf="userData.locations" style="padding-bottom: 50px">
             <ion-item lines="none" class="border-item" style="font-size: 0.8em;" *ngFor="let eachLocation of userData.locations; let i = index" (press)="onPress(i)">
               <ion-label>

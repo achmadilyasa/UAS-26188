@@ -106,7 +106,7 @@ export class MapsPage implements OnInit {
           clickable: true
         });
         marker.info = new google.maps.InfoWindow({
-          content: this.userFriendsData[idx].name
+          content: '<ion-text style="color: #000000; font-weight: bold;">' + this.userFriendsData[idx].name + '</ion-text>'
         });
         google.maps.event.addListener(marker, 'click', () => {
           marker.info.open(map, marker);
