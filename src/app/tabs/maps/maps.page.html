@@ -1,3 +1,11 @@
+<style>
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
 <ion-content>
   <ion-fab id="fabCurLoc" vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="openModal()" color="danger">
@@ -11,9 +19,9 @@
   <ion-fab id="fabOpenModal" vertical="bottom" horizontal="end" slot="fixed">
 
   </ion-fab>
-    <ion-row id="transparentLayer" class="ion-hide max-width-height bg-layer" slot="fixed" (click)="hideModal()">
+    <ion-row id="transparentLayer" class="ion-hide bg-layer" slot="fixed" (click)="hideModal()">
   </ion-row>
-  <ion-row id="modalLayer" class="ion-hide ion-justify-content-center ion-align-items-center max-width-height" slot="fixed">
+  <ion-row id="modalLayer" class="ion-hide ion-justify-content-center ion-align-items-center centered" slot="fixed">
     <ion-card style="z-index: 1000;">
       <div class="ion-text-right" style="padding-right: 4px; padding-top: 4px;">
         <ion-icon name="close-outline" style="font-size: 1.2em;" (click)="hideModal()"></ion-icon>

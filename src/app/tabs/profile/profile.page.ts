@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
-import {ActionSheetController, AlertController, LoadingController, Platform, ToastController} from '@ionic/angular';
+import {ActionSheetController, AlertController, LoadingController, Platform} from '@ionic/angular';
 import {FriendService} from '../../services/friend.service';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {AngularFireDatabase} from '@angular/fire/database';
@@ -15,15 +15,15 @@ import {finalize} from 'rxjs/operators';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  private idUser: string;
-  private userData: any;
-  private userLocations: any[] = [];
-  private isDesktop: boolean;
-  private downloadURL: any;
-  private imageFile: any;
-  private base64Image: any;
-  private boolCamera: boolean = null;
-  private photo: SafeResourceUrl;
+  idUser: string;
+  userData: any;
+  userLocations: any[] = [];
+  isDesktop: boolean;
+  downloadURL: any;
+  imageFile: any;
+  base64Image: any;
+  boolCamera: boolean = null;
+  photo: SafeResourceUrl;
   @ViewChild('filePicker', { static: false }) filePickerRef: ElementRef<HTMLInputElement>;
 
   constructor(
@@ -164,7 +164,7 @@ export class ProfilePage implements OnInit {
     });
     await loading.present();
 
-    const {role, data} = await loading.onDidDismiss();
+    await loading.onDidDismiss();
     console.log('Loading dismissed!');
   }
 

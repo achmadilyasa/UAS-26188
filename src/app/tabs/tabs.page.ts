@@ -66,9 +66,8 @@ export class TabsPage {
     const todayYear = today.getFullYear();
     const todayHour = today.getHours();
     const todayMinute = today.getMinutes();
-    const todayDate: string = todayDay + ' ' + this.monthNames[todayMonth] + ' ' + todayYear + ' ' + todayHour + ':' + todayMinute;
 
-    return todayDate;
+    return todayDay + ' ' + this.monthNames[todayMonth] + ' ' + todayYear + ' ' + todayHour + ':' + todayMinute;
   }
 
   async presentLoading(){
@@ -110,14 +109,14 @@ export class TabsPage {
           const newLocation: any = {
             lat: lat,
             lng: lng,
-            nama: 'Automatic Location Pinpoint',
+            nama: 'Update Location Feed',
             tanggal: todayDate
           };
           this.userLocations.push(newLocation);
           this.userData.locations = this.userLocations;
 
           this.userService.update(this.idUser, this.userData);
-          this.delay(600000).then(any => {
+          this.delay(600000).then(() => {
             this.autoCheckIn();
           });
         });
